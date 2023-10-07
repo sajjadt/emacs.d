@@ -176,6 +176,16 @@
 
 (provide 'init)
 
+
+;; Setting language support for literate programming in Org mode
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(
+   (C . t)
+   (haskell . t)
+   (python . t)
+   ))
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: t
