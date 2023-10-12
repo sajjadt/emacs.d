@@ -186,6 +186,29 @@
    (python . t)
    ))
 
+
+;; Enabling GitHub copilot
+(require-package 'use-package)
+(require-package 'quelpa-use-package)
+
+(require 'use-package)
+(require 'quelpa-use-package)
+
+(use-package copilot
+  :quelpa (copilot :fetcher github
+                   :repo "zerolfx/copilot.el"
+                   :branch "main"
+                   :files ("dist" "*.el"))
+  hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)
+              ("M-n" . 'copilot-next-completion)
+              ("M-p" . 'copilot-previous-completion)
+              ))
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: t
